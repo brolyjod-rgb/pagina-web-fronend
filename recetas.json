@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "titulo": "Arroz con pollo",
+    "descripcion": "Receta cl\u00e1sica con arroz y pollo.",
+    "ingredientes": [
+      "arroz",
+      "pollo",
+      "cebolla",
+      "pimiento"
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "Ceviche de camar\u00f3n",
+    "descripcion": "Ceviche fresco con lim\u00f3n.",
+    "ingredientes": [
+      "camaron",
+      "limon",
+      "cebolla",
+      "tomate"
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "Tortilla de huevo",
+    "descripcion": "Tortilla sencilla y r\u00e1pida.",
+    "ingredientes": [
+      "huevo",
+      "sal",
+      "aceite"
+    ]
+  }
+]
