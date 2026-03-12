@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recetas - Sabores Deliciosos</title>
+    <title>Sabores Deliciosos</title>
+
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/recipes.css">
+
+    <!-- CSS CORRECTO PARA LA ESTRUCTURA ACTUAL -->
+    <link rel="stylesheet" href="/sabores_deliciosos/css/recipes.css">
 </head>
+
 <body>
     <header class="header">
         <div class="header-content">
-            <a href="../index.html" class="logo">
+            <a href="/index.html" class="logo">
                 <span class="logo-icon">🍳</span>
                 <span>Sabores Deliciosos</span>
             </a>
+
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="../index.html">Inicio</a></li>
-                    <li><a href="recipes.html" class="active">Recetas</a></li>
-                    <li><a href="addRecipe.html">Agregar</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="/index.html" class="active">Inicio</a></li>
+                    <li><a href="/sabores_deliciosos/html/recipes.html">Recetas</a></li>
+                    <li><a href="/sabores_deliciosos/html/addRecipe.html">Agregar</a></li>
+                    <li><a href="/sabores_deliciosos/html/contact.html">Contacto</a></li>
                 </ul>
             </nav>
         </div>
@@ -29,149 +35,46 @@
 
     <main class="main">
         <div class="page-header">
-            <h1 class="page-title">📖 Todas las Recetas</h1>
-            <p class="page-subtitle">Explora nuestra colección completa de recetas deliciosas</p>
+            <h1 class="page-title">🍽️ Bienvenido a Sabores Deliciosos</h1>
+            <p class="page-subtitle">Explora recetas increíbles o agrega tus propias creaciones</p>
         </div>
 
-        <div class="search-filter-container">
-            <div class="search-box">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="searchInput" class="search-input" placeholder="Buscar por título, descripción o ingrediente...">
-            </div>
-            
-            <div class="filter-container" id="filterContainer">
-                <button class="filter-btn active" data-filter="all">Todas</button>
-                <button class="filter-btn" data-filter="principal">Platos Principales</button>
-                <button class="filter-btn" data-filter="saludable">Saludable</button>
-                <button class="filter-btn" data-filter="postre">Postres</button>
-                <button class="filter-btn" data-filter="rapido">Rápido</button>
-            </div>
-        </div>
-
-        <div class="stats-section">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3 class="stat-number" id="totalRecipes">0</h3>
-                    <p class="stat-label">Recetas Totales</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number" id="totalCategories">0</h3>
-                    <p class="stat-label">Categorías</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number" id="totalUserRecipes">0</h3>
-                    <p class="stat-label">Tus Recetas</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number" id="totalFavorites">0</h3>
-                    <p class="stat-label">Favoritos</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="recipes-grid" id="recipesGrid">
-        </div>
-
-        <div class="empty-state" id="emptyState" style="display: none;">
-            <div class="empty-state-icon">🍽️</div>
-            <h2>No se encontraron recetas</h2>
-            <p>Intenta con otros filtros o agrega una nueva receta</p>
-            <a href="addRecipe.html" class="btn btn-primary">➕ Agregar Receta</a>
+        <div class="home-options">
+            <a href="/sabores_deliciosos/html/recipes.html" class="btn btn-primary">📖 Ver Recetas</a>
+            <a href="/sabores_deliciosos/html/addRecipe.html" class="btn btn-secondary">➕ Agregar Receta</a>
         </div>
     </main>
-
-    <div class="modal" id="recipeModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-            <div class="modal-image-container">
-                <img class="modal-image" id="modalImage" src="" alt="Imagen de la receta">
-            </div>
-            <div class="modal-body">
-                <span class="recipe-category" id="modalCategory"></span>
-                <h2 class="modal-title" id="modalTitle"></h2>
-                
-                <div class="modal-meta">
-                    <div class="modal-meta-item">
-                        <span class="meta-icon">⏱️</span>
-                        <span id="modalTime">30 min</span>
-                    </div>
-                    <div class="modal-meta-item">
-                        <span class="meta-icon">👥</span>
-                        <span id="modalServings">4 personas</span>
-                    </div>
-                    <div class="modal-meta-item">
-                        <span class="meta-icon">🔥</span>
-                        <span id="modalCalories">450 kcal</span>
-                    </div>
-                    <div class="modal-meta-item">
-                        <span class="meta-icon">⭐</span>
-                        <span id="modalRating">4.8</span>
-                    </div>
-                </div>
-
-                <div class="modal-section">
-                    <h3 class="modal-section-title">📋 Ingredientes</h3>
-                    <ul class="ingredients-list" id="modalIngredients"></ul>
-                </div>
-
-                <div class="modal-section">
-                    <h3 class="modal-section-title">👨‍🍳 Preparación</h3>
-                    <ol class="steps-list" id="modalSteps"></ol>
-                </div>
-
-                <div class="modal-section" id="modalDescriptionSection">
-                    <h3 class="modal-section-title">💬 Descripción</h3>
-                    <p class="modal-description" id="modalDescription"></p>
-                </div>
-
-                <div class="modal-actions">
-                    <button class="btn btn-favorite" id="btnFavorite">🤍 Agregar a Favoritos</button>
-                    <button class="btn btn-share" id="btnShare">📤 Compartir</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>🍳 Sabores Deliciosos</h4>
-                <p>Descubre las mejores recetas de cocina para sorprender a tu familia y amigos.</p>
+                <p>Las mejores recetas para toda la familia.</p>
             </div>
+
             <div class="footer-section">
-                <h4>Enlaces Rápidos</h4>
-                <a href="../index.html">Inicio</a>
-                <a href="recipes.html">Recetas</a>
-                <a href="addRecipe.html">Agregar</a>
-                <a href="contact.html">Contacto</a>
+                <h4>Enlaces</h4>
+                <a href="/index.html">Inicio</a>
+                <a href="/sabores_deliciosos/html/recipes.html">Recetas</a>
+                <a href="/sabores_deliciosos/html/addRecipe.html">Agregar</a>
+                <a href="/sabores_deliciosos/html/contact.html">Contacto</a>
             </div>
-            <div class="footer-section">
-                <h4>Categorías</h4>
-                <a href="#" data-filter="principal">Platos Principales</a>
-                <a href="#" data-filter="postre">Postres</a>
-                <a href="#" data-filter="saludable">Saludable</a>
-                <a href="#" data-filter="rapido">Rápido</a>
-            </div>
+
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📺</a>
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📺</a>
                 </div>
             </div>
         </div>
+
         <p class="footer-bottom">© 2026 Sabores Deliciosos - Todos los derechos reservados</p>
     </footer>
 
-    <div class="toast" id="toast"></div>
-
-    <script src="../js/recipesData.js"></script>
-    <script src="../js/recipesUI.js"></script>
-    <script src="../js/recipesFilters.js"></script>
-    <script src="../js/recipesFavorites.js"></script>
-    <script src="../js/recipesApp.js"></script>
+    <!-- JS CORRECTO -->
+    <script src="/sabores_deliciosos/js/recipesData.js"></script>
 </body>
 </html>
-
