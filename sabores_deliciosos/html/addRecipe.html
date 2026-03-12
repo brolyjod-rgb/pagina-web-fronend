@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Receta - Sabores Deliciosos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/addRecipe.css">
+    <link rel="stylesheet" href="../css/recipes.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">ðŸ³</span>
+                <span>Sabores Deliciosos</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../index.html">Inicio</a></li>
+                    <li><a href="recipes.html">Recetas</a></li>
+                    <li><a href="addRecipe.html" class="active">Agregar</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-header">
+            <h1 class="page-title">âž• Agregar Nueva Receta</h1>
+            <p class="page-subtitle">Comparte tu receta favorita con nuestra comunidad</p>
+        </div>
+
+        <div class="add-recipe-container">
+            <form class="recipe-form" id="addRecipeForm">
+                <div class="form-group">
+                    <label for="title">TÃ­tulo de la receta *</label>
+                    <input type="text" id="title" name="title" required placeholder="Ej: Pasta Carbonara">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">CategorÃ­a *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Seleccionar...</option>
+                            <option value="principal">Platos Principales</option>
+                            <option value="saludable">Saludable</option>
+                            <option value="postre">Postres</option>
+                            <option value="rapido">RÃ¡pido</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Tiempo de preparaciÃ³n *</label>
+                        <input type="text" id="time" name="time" required placeholder="Ej: 30 min">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="servings">Porciones *</label>
+                        <input type="number" id="servings" name="servings" required min="1" placeholder="Ej: 4">
+                    </div>
+                    <div class="form-group">
+                        <label for="calories">CalorÃ­as por porciÃ³n *</label>
+                        <input type="number" id="calories" name="calories" required min="0" placeholder="Ej: 450">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">URL de la imagen</label>
+                    <input type="url" id="image" name="image" placeholder="https://ejemplo.com/imagen.jpg">
+                    <p class="form-hint">Deja vacÃ­o para usar imagen por defecto</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="ingredients">Ingredientes *</label>
+                    <textarea id="ingredients" name="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2&#10;Ingrediente 3"></textarea>
+                    <p class="form-hint">Un ingrediente por lÃ­nea</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="steps">Pasos de preparaciÃ³n *</label>
+                    <textarea id="steps" name="steps" required placeholder="Paso 1: Preparar los ingredientes&#10;Paso 2: Cocinar a fuego medio"></textarea>
+                    <p class="form-hint">Un paso por lÃ­nea</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">DescripciÃ³n *</label>
+                    <textarea id="description" name="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Guardar Receta</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>ðŸ³ Sabores Deliciosos</h4>
+                <p>Descubre las mejores recetas de cocina para sorprender a tu familia y amigos.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces RÃ¡pidos</h4>
+                <a href="../index.html">Inicio</a>
+                <a href="recipes.html">Recetas</a>
+                <a href="addRecipe.html">Agregar</a>
+                <a href="contact.html">Contacto</a>
+            </div>
+            <div class="footer-section">
+                <h4>CategorÃ­as</h4>
+                <a href="#" data-filter="principal">Platos Principales</a>
+                <a href="#" data-filter="postre">Postres</a>
+                <a href="#" data-filter="saludable">Saludable</a>
+                <a href="#" data-filter="rapido">RÃ¡pido</a>
+            </div>
+            <div class="footer-section">
+                <h4>SÃ­guenos</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link">ðŸ“˜</a>
+                    <a href="#" class="social-link">ðŸ“·</a>
+                    <a href="#" class="social-link">ðŸ¦</a>
+                    <a href="#" class="social-link">ðŸ“º</a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-bottom">Â© 2026 Sabores Deliciosos - Todos los derechos reservados</p>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="../js/recipesData.js"></script>
+    <script src="../js/addRecipe.js"></script>
+</body>
+</html>

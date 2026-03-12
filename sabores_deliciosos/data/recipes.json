@@ -1,0 +1,38 @@
+﻿[
+  {
+    "id": 1,
+    "title": "Pasta Carbonara Clasica",
+    "category": "principal",
+    "time": "25 min",
+    "servings": 4,
+    "calories": 520,
+    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600",
+    "ingredients": ["400g de spaghetti", "200g de guanciale", "4 yemas de huevo", "100g de queso Pecorino"],
+    "steps": ["Cocinar la pasta", "Dorar el guanciale", "Batir yemas con queso", "Mezclar todo"],
+    "description": "La autentica carbonara romana, cremosa y deliciosa."
+  },
+  {
+    "id": 2,
+    "title": "Ensalada Buddha Bowl",
+    "category": "saludable",
+    "time": "20 min",
+    "servings": 2,
+    "calories": 380,
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600",
+    "ingredients": ["1 taza de quinoa", "1 aguacate", "1 zanahoria", "Garbanzos", "Espinacas"],
+    "steps": ["Lavar espinacas", "Distribuir quinoa", "AÃ±adir vegetales", "Preparar aderezo"],
+    "description": "Un bowl nutritivo y colorido lleno de vegetales frescos."
+  },
+  {
+    "id": 3,
+    "title": "Tiramisu Tradicional",
+    "category": "postre",
+    "time": "30 min",
+    "servings": 8,
+    "calories": 420,
+    "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600",
+    "ingredients": ["500g mascarpone", "4 huevos", "100g azucar", "Cafe espresso", "Bizcochos"],
+    "steps": ["Batir yemas con azucar", "Incorporar mascarpone", "Montar claras", "Armar capas"],
+    "description": "El postre italiano por excelencia con cafe y mascarpone."
+  }
+]
