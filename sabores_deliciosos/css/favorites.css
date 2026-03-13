@@ -1,31 +1,93 @@
-/* Centrar el título y subtítulo del contacto */
+/* === TIPOGRAFÍA GENERAL === */
+body {
+    font-family: "Poppins", sans-serif;
+    background: #fafafa;
+    margin: 0;
+    color: #333;
+}
+
+h1, h2, h3, .recipe-card-title {
+    font-family: "Playfair Display", serif;
+}
+
+/* === HEADER === */
+.header {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #1a1a2e;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+/* MENÚ */
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 1.3rem;
+}
+
+.nav-list a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #444;
+    transition: .3s;
+}
+
+.nav-list a:hover {
+    color: #ff6b6b;
+}
+
+/* === SECCIÓN PRINCIPAL === */
 .page-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin: 3rem 0 1.2rem;
 }
 
 .page-title {
-    text-align: center;
+    font-size: 2.3rem;
+    margin-bottom: .2rem;
 }
 
 .page-subtitle {
-    text-align: center;
+    color: #666;
 }
+
+/* === FAVORITOS === */
 .favorites-container {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: auto;
     padding: 2rem;
 }
 
-.favorites-container .page-header {
-    text-align: center;
-    margin-bottom: 2rem;
+.favorites-header {
+    text-align: right;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #555;
 }
 
-#recipesGrid {
+/* === GRID DE RECETAS === */
+.recipes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.8rem;
 }
 
 .recipe-card {
@@ -33,17 +95,16 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: .3s;
     cursor: pointer;
 }
 
 .recipe-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
 .recipe-card-image {
-    position: relative;
     height: 200px;
     overflow: hidden;
 }
@@ -54,75 +115,111 @@
     object-fit: cover;
 }
 
-.recipe-card-category {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    padding: 0.35rem 0.75rem;
-    background: #ff6b6b;
-    color: white;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 500;
-}
-
-.btn-favorite.mini {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.95);
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
 .recipe-card-content {
-    padding: 1.25rem;
+    padding: 1.4rem;
 }
 
 .recipe-card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #1a1a2e;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: .5rem;
 }
 
 .recipe-card-description {
     color: #666;
-    font-size: 0.9rem;
+    font-size: .9rem;
+    line-height: 1.4;
     margin-bottom: 1rem;
 }
 
-.recipe-card-meta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.meta-item {
-    font-size: 0.85rem;
-    color: #666;
-}
-
+/* === EMPTY STATE === */
 .empty-state {
     text-align: center;
-    padding: 4rem 2rem;
-    color: #666;
+    padding: 4rem 1rem;
 }
 
 .empty-state-icon {
     font-size: 4rem;
-    margin-bottom: 1rem;
 }
 
 .empty-state h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #1a1a2e;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    margin: .5rem 0;
 }
 
+.btn-primary {
+    display: inline-block;
+    padding: .75rem 1.5rem;
+    background: #ff6b6b;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: .3s;
+}
+
+.btn-primary:hover {
+    background: #ff5252;
+}
+
+/* === MODAL === */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.modal-content {
+    background: #fff;
+    max-width: 750px;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    animation: fadeIn .3s ease;
+}
+
+.modal-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.modal-body {
+    padding: 1.8rem;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.btn-favorite,
+.btn-share {
+    padding: .75rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: .5rem;
+}
+
+.btn-favorite {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-share {
+    background: #eaeaea;
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
