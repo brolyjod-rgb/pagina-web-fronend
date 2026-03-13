@@ -1,4 +1,17 @@
-﻿.favorites-container {
+/* Centrar el título y subtítulo del contacto */
+.page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    text-align: center;
+}
+
+.page-subtitle {
+    text-align: center;
+}
+.favorites-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 2rem;
@@ -112,3 +125,4 @@
     color: #1a1a2e;
     margin-bottom: 0.5rem;
 }
+
