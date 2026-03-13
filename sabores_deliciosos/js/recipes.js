@@ -1,60 +1,48 @@
-function getRecipeId() {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("recipesGrid");
+    if (!container) return;
 
-function loadRecipes() {
-    return JSON.parse(localStorage.getItem("recipes") || "[]");
-}
+    loadRecipes();
 
-function renderRecipe(recipe) {
+    function loadRecipes() {
+        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
-    const container = document.getElementById("recipeContainer");
+        container.innerHTML = "";
 
-    container.innerHTML = `
-        <div class="recipe-detail-card">
+        if (recipes.length === 0) {
+            container.innerHTML = `
+                <p class="empty-state">No hay recetas aún. Agrega una nueva.</p>
+            `;
+            return;
+        }
 
-            <img class="recipe-detail-image" src="${recipe.image}" alt="${recipe.title}">
+        recipes.forEach(recipe => {
+            const card = document.createElement("div");
+            card.classList.add("recipe-card");
 
-            <h1 class="recipe-detail-title">${recipe.title}</h1>
+            card.innerHTML = `
+                <div class="recipe-card-image">
+                    <img src="${recipe.image}" alt="Imagen de receta">
+                    <span class="recipe-card-category">${recipe.category}</span>
+                </div>
 
-            <div class="recipe-detail-meta">
-                <span>⏱️ ${recipe.time}</span>
-                <span>👥 ${recipe.servings} porciones</span>
-                <span>🔥 ${recipe.calories} kcal</span>
-            </div>
+                <div class="recipe-card-content">
+                    <h3 class="recipe-card-title">${recipe.title}</h3>
+                    <p class="recipe-card-description">${recipe.description}</p>
 
-            <h2>📋 Ingredientes</h2>
-            <ul class="recipe-detail-list">
-                ${recipe.ingredients.map(i => `<li>${i}</li>`).join("")}
-            </ul>
+                    <div class="recipe-card-meta">
+                        <span>⏱ ${recipe.time}</span>
+                        <span>🔥 ${recipe.calories} cal</span>
+                    </div>
+                </div>
+            `;
 
-            <h2>👨‍🍳 Preparación</h3>
-            <ol class="recipe-detail-list">
-                ${recipe.steps.map(s => `<li>${s}</li>`).join("")}
-            </ol>
+            // Click → abrir receta
+            card.addEventListener("click", () => {
+                window.location.href = `/sabores_deliciosos/html/recipe.html?id=${recipe.id}`;
+            });
 
-            <h2>💬 Descripción</h2>
-            <p>${recipe.description}</p>
-
-        </div>
-    `;
-}
-
-(function initRecipePage() {
-    const id = getRecipeId();
-    if (!id) {
-        alert("No se encontró la receta");
-        return;
+            container.appendChild(card);
+        });
     }
-
-    const recipes = loadRecipes();
-    const recipe = recipes.find(r => r.id == id);
-
-    if (!recipe) {
-        alert("La receta no existe");
-        return;
-    }
-
-    renderRecipe(recipe);
-})();
+});
