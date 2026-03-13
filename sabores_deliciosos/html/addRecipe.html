@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Receta - Sabores Deliciosos</title>
 
-    <!-- FUENTES -->
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <!-- CSS global + específico -->
+    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/addRecipe.css">
-    <link rel="stylesheet" href="../css/recipes.css">
-    <link rel="stylesheet" href="../css/index.css"> <!-- Para mantener el diseño global -->
 </head>
 
 <body>
@@ -38,26 +37,29 @@
     </header>
 
     <!-- MAIN -->
-    <main class="main">
-        <div class="page-header">
+    <main class="main fade-in">
+
+        <!-- Encabezado -->
+        <section class="page-header">
             <h1 class="page-title">✏️ Agregar Nueva Receta</h1>
-            <p class="page-subtitle">Comparte tu receta favorita con nuestra comunidad</p>
-        </div>
+            <p class="page-subtitle">Comparte tu creación culinaria con la comunidad</p>
+        </section>
 
-        <div class="add-recipe-container">
-            <form class="recipe-form" id="addRecipeForm">
+        <!-- Formulario -->
+        <section class="add-recipe-container">
+            <form class="recipe-form card" id="addRecipeForm">
 
-                <!-- TÍTULO -->
+                <!-- Título -->
                 <div class="form-group">
                     <label for="title">Título de la receta *</label>
-                    <input type="text" id="title" name="title" required placeholder="Ej: Pasta Carbonara">
+                    <input type="text" id="title" required placeholder="Ej: Pasta Carbonara">
                 </div>
 
-                <!-- CATEGORÍA + TIEMPO -->
+                <!-- Categoría + Tiempo -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="category">Categoría *</label>
-                        <select id="category" name="category" required>
+                        <select id="category" required>
                             <option value="">Seleccionar...</option>
                             <option value="principal">🍽️ Platos Principales</option>
                             <option value="saludable">🥗 Saludable</option>
@@ -68,54 +70,54 @@
 
                     <div class="form-group">
                         <label for="time">Tiempo de preparación *</label>
-                        <input type="text" id="time" name="time" required placeholder="Ej: 30 min">
+                        <input type="text" id="time" required placeholder="Ej: 30 min">
                     </div>
                 </div>
 
-                <!-- PORCIONES + CALORÍAS -->
+                <!-- Porciones + Calorías -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="servings">Porciones *</label>
-                        <input type="number" id="servings" name="servings" min="1" required placeholder="Ej: 4">
+                        <input type="number" id="servings" min="1" required placeholder="Ej: 4">
                     </div>
 
                     <div class="form-group">
                         <label for="calories">Calorías por porción *</label>
-                        <input type="number" id="calories" name="calories" min="0" required placeholder="Ej: 450">
+                        <input type="number" id="calories" min="0" required placeholder="Ej: 450">
                     </div>
                 </div>
 
-                <!-- IMAGEN -->
+                <!-- URL imagen -->
                 <div class="form-group">
                     <label for="image">URL de la imagen</label>
-                    <input type="url" id="image" name="image" placeholder="https://ejemplo.com/imagen.jpg">
-                    <p class="form-hint">Déjalo vacío para usar una imagen por defecto</p>
+                    <input type="url" id="image" placeholder="https://ejemplo.com/imagen.jpg">
+                    <p class="form-hint">Si lo dejas vacío se usará una imagen por defecto</p>
                 </div>
 
-                <!-- INGREDIENTES -->
+                <!-- Ingredientes -->
                 <div class="form-group">
                     <label for="ingredients">Ingredientes *</label>
-                    <textarea id="ingredients" name="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2&#10;Ingrediente 3"></textarea>
-                    <p class="form-hint">Un ingrediente por línea</p>
+                    <textarea id="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2&#10;Ingrediente 3"></textarea>
+                    <p class="form-hint">Escribe un ingrediente por línea</p>
                 </div>
 
-                <!-- PASOS -->
+                <!-- Pasos -->
                 <div class="form-group">
                     <label for="steps">Pasos de preparación *</label>
-                    <textarea id="steps" name="steps" required placeholder="Paso 1&#10;Paso 2&#10;Paso 3"></textarea>
-                    <p class="form-hint">Un paso por línea</p>
+                    <textarea id="steps" required placeholder="Paso 1&#10;Paso 2&#10;Paso 3"></textarea>
+                    <p class="form-hint">Escribe un paso por línea</p>
                 </div>
 
-                <!-- DESCRIPCIÓN -->
+                <!-- Descripción -->
                 <div class="form-group">
                     <label for="description">Descripción *</label>
-                    <textarea id="description" name="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
+                    <textarea id="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
                 </div>
 
-                <!-- BOTÓN -->
+                <!-- Botón -->
                 <button type="submit" class="btn-submit">💾 Guardar Receta</button>
             </form>
-        </div>
+        </section>
     </main>
 
     <!-- FOOTER -->
@@ -124,7 +126,7 @@
 
             <div class="footer-section">
                 <h4>🍳 Sabores Deliciosos</h4>
-                <p>Descubre las mejores recetas para sorprender a tu familia y amigos.</p>
+                <p>Las mejores recetas para tu cocina diaria.</p>
             </div>
 
             <div class="footer-section">
@@ -137,7 +139,7 @@
 
             <div class="footer-section">
                 <h4>Categorías</h4>
-                <a href="#" data-filter="principal">🍽️ Platos Principales</a>
+                <a href="#" data-filter="principal">🍽️ Principales</a>
                 <a href="#" data-filter="postre">🍰 Postres</a>
                 <a href="#" data-filter="saludable">🥗 Saludable</a>
                 <a href="#" data-filter="rapido">⚡ Rápido</a>
@@ -146,13 +148,12 @@
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="#">📘</a>
-                    <a href="#">📷</a>
-                    <a href="#">🐦</a>
-                    <a href="#">📺</a>
+                    <a>📘</a>
+                    <a>📷</a>
+                    <a>🐦</a>
+                    <a>📺</a>
                 </div>
             </div>
-
         </div>
 
         <p class="footer-bottom">© 2026 Sabores Deliciosos - Todos los derechos reservados</p>
