@@ -8,18 +8,19 @@
     <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS del home -->
     <link rel="stylesheet" href="sabores_deliciosos/css/index.css">
 </head>
+
 <body>
     <header class="header">
         <div class="header-content">
             <a href="index.html" class="logo">
-                <span class="logo-icon">🍳</span>
-                <span>Sabores Deliciosos</span>
+                <span class="logo-icon">🍳</span> Sabores Deliciosos
             </a>
+
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html" class="active">Inicio</a></li>
@@ -32,10 +33,13 @@
     </header>
 
     <main class="main">
+
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">🍳 Bienvenido a Sabores Deliciosos</h1>
-                <p class="hero-subtitle">Descubre recetas increíbles y comparte tus propias creaciones culinarias</p>
+                <p class="hero-subtitle">Descubre recetas increíbles y comparte tus propias creaciones culinarias.</p>
+
                 <div class="hero-buttons">
                     <a href="html/addRecipe.html" class="btn btn-primary">➕ Agregar Receta</a>
                     <a href="html/favorites.html" class="btn btn-secondary">❤️ Ver Favoritos</a>
@@ -43,20 +47,24 @@
             </div>
         </section>
 
+        <!-- STATS SECTION -->
         <section class="stats-section">
             <div class="stats-grid">
                 <div class="stat-item">
                     <h3 class="stat-number" id="totalRecipes">0</h3>
                     <p class="stat-label">Recetas Totales</p>
                 </div>
+
                 <div class="stat-item">
                     <h3 class="stat-number" id="totalCategories">0</h3>
                     <p class="stat-label">Categorías</p>
                 </div>
+
                 <div class="stat-item">
                     <h3 class="stat-number" id="totalFavorites">0</h3>
                     <p class="stat-label">Favoritos</p>
                 </div>
+
                 <div class="stat-item">
                     <h3 class="stat-number">4.8</h3>
                     <p class="stat-label">Calificación</p>
@@ -64,71 +72,78 @@
             </div>
         </section>
 
+        <!-- FEATURES -->
         <section class="features-section">
             <h2 class="section-title">🌟 ¿Por qué Sabores Deliciosos?</h2>
+
             <div class="features-grid">
                 <div class="feature-item">
                     <span class="feature-icon">📝</span>
                     <h3>Fáciles de Seguir</h3>
-                    <p>Instrucciones paso a paso claras y simples</p>
+                    <p>Instrucciones claras y paso a paso.</p>
                 </div>
+
                 <div class="feature-item">
                     <span class="feature-icon">🥘</span>
                     <h3>Ingredientes Accesibles</h3>
-                    <p>Recetas con ingredientes que puedes encontrar fácilmente</p>
+                    <p>Ingredientes fáciles de conseguir.</p>
                 </div>
+
                 <div class="feature-item">
                     <span class="feature-icon">⏱️</span>
                     <h3>Tiempos Reales</h3>
-                    <p>Información precisa de tiempo de preparación</p>
+                    <p>Datos precisos de preparación.</p>
                 </div>
+
                 <div class="feature-item">
                     <span class="feature-icon">❤️</span>
                     <h3>Comunidad Activa</h3>
-                    <p>Comparte y guarda tus recetas favoritas</p>
+                    <p>Guarda, comenta y comparte recetas.</p>
                 </div>
             </div>
         </section>
 
+        <!-- CTA -->
         <section class="cta-section">
             <div class="cta-content">
                 <h2>👨‍🍳 ¿Tienes una receta especial?</h2>
-                <p>Comparte tu creación con nuestra comunidad y ayuda a otros a cocinar algo delicioso</p>
+                <p>Compártela con la comunidad y ayuda a otros a cocinar algo increíble.</p>
                 <a href="html/addRecipe.html" class="btn btn-primary">Agregar Mi Receta</a>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>🍳 Sabores Deliciosos</h4>
-                <p>Descubre las mejores recetas de cocina para sorprender a tu familia y amigos.</p>
+                <p>Las mejores recetas para disfrutar y compartir.</p>
             </div>
+
             <div class="footer-section">
-                <h4>Enlaces Rápidos</h4>
+                <h4>Enlaces</h4>
                 <a href="index.html">Inicio</a>
                 <a href="html/addRecipe.html">Agregar</a>
                 <a href="html/favorites.html">Favoritos</a>
                 <a href="html/contact.html">Contacto</a>
             </div>
+
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📺</a>
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📺</a>
                 </div>
             </div>
         </div>
+
         <p class="footer-bottom">© 2026 Sabores Deliciosos - Todos los derechos reservados</p>
     </footer>
-
-    <div class="toast" id="toast"></div>
 
     <script src="js/recipesData.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
-
