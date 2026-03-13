@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Receta - Sabores Deliciosos</title>
+
+    <!-- FUENTES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/addRecipe.css">
     <link rel="stylesheet" href="../css/recipes.css">
+    <link rel="stylesheet" href="../css/index.css"> <!-- Para mantener el diseño global -->
 </head>
 
 <body>
+
     <!-- HEADER -->
     <header class="header">
         <div class="header-content">
@@ -40,7 +46,7 @@
 
         <div class="add-recipe-container">
             <form class="recipe-form" id="addRecipeForm">
-                
+
                 <!-- TÍTULO -->
                 <div class="form-group">
                     <label for="title">Título de la receta *</label>
@@ -106,6 +112,7 @@
                     <textarea id="description" name="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
                 </div>
 
+                <!-- BOTÓN -->
                 <button type="submit" class="btn-submit">💾 Guardar Receta</button>
             </form>
         </div>
@@ -139,10 +146,10 @@
             <div class="footer-section">
                 <h4>Síguenos</h4>
                 <div class="social-links">
-                    <a href="#" class="social-link">📘</a>
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📺</a>
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📺</a>
                 </div>
             </div>
 
@@ -153,6 +160,7 @@
 
     <div class="toast" id="toast"></div>
 
+    <!-- JS -->
     <script src="../js/recipesData.js"></script>
     <script src="../js/addRecipe.js"></script>
 
