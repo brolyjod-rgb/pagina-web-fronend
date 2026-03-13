@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("addRecipeForm");
     
     if (form) {
@@ -8,8 +8,15 @@
             const ingredientsText = document.getElementById("ingredients").value.trim();
             const stepsText = document.getElementById("steps").value.trim();
             
-            const ingredients = ingredientsText.split("\n").map(i => i.trim()).filter(i => i.length > 0);
-            const steps = stepsText.split("\n").map(s => s.trim()).filter(s => s.length > 0);
+            const ingredients = ingredientsText
+                .split("\n")
+                .map(i => i.trim())
+                .filter(i => i.length > 0);
+                
+            const steps = stepsText
+                .split("\n")
+                .map(s => s.trim())
+                .filter(s => s.length > 0);
             
             const newRecipe = {
                 id: Date.now(),
@@ -27,9 +34,12 @@
             };
             
             saveRecipe(newRecipe);
-            showToast("Receta guardada exitosamente");
+            showToast("Receta guardada exitosamente 👌");
+
             form.reset();
-            window.location.href = "recipes.html";
+
+            // RUTA CORREGIDA
+            window.location.href = "../html/recipes.html";
         });
     }
 });
