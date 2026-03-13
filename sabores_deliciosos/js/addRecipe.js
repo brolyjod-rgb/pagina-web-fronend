@@ -5,32 +5,25 @@ document.addEventListener("DOMContentLoaded", () => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            // --- Obtener valores del formulario ---
+            // Obtener datos del formulario
             const ingredients = document.getElementById("ingredients").value
-                .trim()
                 .split("\n")
                 .map(i => i.trim())
-                .filter(i => i !== "");
+                .filter(i => i);
 
             const steps = document.getElementById("steps").value
-                .trim()
                 .split("\n")
                 .map(s => s.trim())
-                .filter(s => s !== "");
-
-            const imageURL = document.getElementById("image").value.trim();
-            const finalImage = imageURL !== "" 
-                ? imageURL 
-                : "/sabores_deliciosos/images/default-recipe.jpg";
+                .filter(s => s);
 
             const newRecipe = {
                 id: Date.now(),
                 title: document.getElementById("title").value.trim(),
                 category: document.getElementById("category").value,
                 time: document.getElementById("time").value.trim(),
-                servings: document.getElementById("servings").value.trim(),
-                calories: document.getElementById("calories").value.trim(),
-                image: finalImage,
+                servings: document.getElementById("servings").value,
+                calories: document.getElementById("calories").value,
+                image: document.getElementById("image").value.trim() || "/sabores_deliciosos/images/default-recipe.jpg",
                 ingredients,
                 steps,
                 description: document.getElementById("description").value.trim(),
@@ -38,36 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 createdAt: new Date().toISOString()
             };
 
-            // --- Guardar receta ---
             saveRecipe(newRecipe);
-
             showToast("Receta guardada exitosamente 👌");
 
-            // --- Limpiar formulario ---
             form.reset();
 
-            // 🔥 IMPORTANTE 🔥
-            // Redirigir a la página de detalle de la receta
-            window.location.href = `/sabores_deliciosos/html/recipe.html?id=${newRecipe.id}`;
+            // Redirigir a recetas
+            window.location.href = "/sabores_deliciosos/html/recipes.html";
         });
     }
 });
 
-
-// --- Guardar en localStorage ---
+/* =======================
+   GUARDAR EN LOCALSTORAGE
+==========================*/
 function saveRecipe(recipe) {
-    const stored = JSON.parse(localStorage.getItem("recipes") || "[]");
-    stored.push(recipe);
-    localStorage.setItem("recipes", JSON.stringify(stored));
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    recipes.push(recipe);
+    localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
-
-// --- Toast visual ---
 function showToast(message) {
     const toast = document.getElementById("toast");
-    if (toast) {
-        toast.textContent = message;
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 3000);
-    }
+    toast.textContent = message;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
 }
