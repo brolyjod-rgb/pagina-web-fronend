@@ -1,48 +1,114 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("recipesGrid");
-    if (!container) return;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Receta - Sabores Deliciosos</title>
 
-    loadRecipes();
+    <!-- Fuentes y CSS -->
+    <link rel="stylesheet" href="/sabores_deliciosos/css/index.css">
+    <link rel="stylesheet" href="/sabores_deliciosos/css/addRecipe.css">
+</head>
 
-    function loadRecipes() {
-        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+<body>
 
-        container.innerHTML = "";
+<header class="header">
+    <div class="header-content">
+        <a href="/index.html" class="logo">🍳 Sabores Deliciosos</a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/sabores_deliciosos/html/recipes.html">Recetas</a></li>
+                <li><a href="/sabores_deliciosos/html/addRecipe.html" class="active">Agregar</a></li>
+                <li><a href="/sabores_deliciosos/html/contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-        if (recipes.length === 0) {
-            container.innerHTML = `
-                <p class="empty-state">No hay recetas aún. Agrega una nueva.</p>
-            `;
-            return;
-        }
+<main class="main fade-in">
+    <section class="page-header">
+        <h1 class="page-title">✏️ Agregar Nueva Receta</h1>
+        <p class="page-subtitle">Comparte tu creación culinaria con la comunidad</p>
+    </section>
 
-        recipes.forEach(recipe => {
-            const card = document.createElement("div");
-            card.classList.add("recipe-card");
+    <section class="add-recipe-container">
+        <form class="recipe-form card" id="addRecipeForm">
+            <!-- Título -->
+            <div class="form-group">
+                <label for="title">Título de la receta *</label>
+                <input type="text" id="title" required placeholder="Ej: Pasta Carbonara">
+            </div>
 
-            card.innerHTML = `
-                <div class="recipe-card-image">
-                    <img src="${recipe.image}" alt="Imagen de receta">
-                    <span class="recipe-card-category">${recipe.category}</span>
+            <!-- Categoría + Tiempo -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Categoría *</label>
+                    <select id="category" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="principal">🍽️ Platos Principales</option>
+                        <option value="saludable">🥗 Saludable</option>
+                        <option value="postre">🍰 Postres</option>
+                        <option value="rapido">⚡ Rápido</option>
+                    </select>
                 </div>
-
-                <div class="recipe-card-content">
-                    <h3 class="recipe-card-title">${recipe.title}</h3>
-                    <p class="recipe-card-description">${recipe.description}</p>
-
-                    <div class="recipe-card-meta">
-                        <span>⏱ ${recipe.time}</span>
-                        <span>🔥 ${recipe.calories} cal</span>
-                    </div>
+                <div class="form-group">
+                    <label for="time">Tiempo de preparación *</label>
+                    <input type="text" id="time" required placeholder="Ej: 30 min">
                 </div>
-            `;
+            </div>
 
-            // Click → abrir receta
-            card.addEventListener("click", () => {
-                window.location.href = `/sabores_deliciosos/html/recipe.html?id=${recipe.id}`;
-            });
+            <!-- Porciones + Calorías -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="servings">Porciones *</label>
+                    <input type="number" id="servings" min="1" required placeholder="Ej: 4">
+                </div>
+                <div class="form-group">
+                    <label for="calories">Calorías por porción *</label>
+                    <input type="number" id="calories" min="0" required placeholder="Ej: 450">
+                </div>
+            </div>
 
-            container.appendChild(card);
-        });
-    }
-});
+            <!-- URL imagen -->
+            <div class="form-group">
+                <label for="image">URL de la imagen</label>
+                <input type="url" id="image" placeholder="https://ejemplo.com/imagen.jpg">
+                <p class="form-hint">Si lo dejas vacío se usará una imagen por defecto</p>
+            </div>
+
+            <!-- Ingredientes -->
+            <div class="form-group">
+                <label for="ingredients">Ingredientes *</label>
+                <textarea id="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2&#10;Ingrediente 3"></textarea>
+                <p class="form-hint">Escribe un ingrediente por línea</p>
+            </div>
+
+            <!-- Pasos -->
+            <div class="form-group">
+                <label for="steps">Pasos de preparación *</label>
+                <textarea id="steps" required placeholder="Paso 1&#10;Paso 2&#10;Paso 3"></textarea>
+                <p class="form-hint">Escribe un paso por línea</p>
+            </div>
+
+            <!-- Descripción -->
+            <div class="form-group">
+                <label for="description">Descripción *</label>
+                <textarea id="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <!-- Botón -->
+            <button type="submit" class="btn-submit">💾 Guardar Receta</button>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="toast" id="toast"></div>
+    <p class="footer-bottom">© 2026 Sabores Deliciosos</p>
+</footer>
+
+<!-- JS -->
+<script src="/sabores_deliciosos/js/addRecipe.js"></script>
+</body>
+</html>
