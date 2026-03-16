@@ -1,5 +1,5 @@
 // recipes.js
-import { supabase } from "./supabaseClient.js";
+import { supabase } from './supabaseClient.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("recipesContainer");
@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadRecipes() {
         try {
             const { data: recipes, error } = await supabase
-                .from("recipes")
-                .select("*")
-                .order("created_at", { ascending: false });
+                .from('recipes')
+                .select('*')
+                .order('created_at', { ascending: false });
 
             if (error) throw error;
 
