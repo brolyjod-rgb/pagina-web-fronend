@@ -1,5 +1,5 @@
 // addRecipe.js
-import { supabase } from './supabaseClient.js';
+import { supabase } from "./supabaseClient.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("addRecipeForm");
@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Obtener datos del formulario
         const ingredients = document.getElementById("ingredients").value
             .split("\n")
             .map(i => i.trim())
@@ -34,12 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const { data, error } = await supabase
-                .from('recipes')
+                .from("recipes")
                 .insert([newRecipe]);
 
             if (error) throw error;
 
-            // Mostrar toast
             const toast = document.getElementById("toast");
             if (toast) {
                 toast.textContent = "Receta guardada exitosamente 👌";
@@ -50,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
             form.reset();
             window.location.href = "recipes.html";
 
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             const toast = document.getElementById("toast");
             if (toast) {
                 toast.textContent = "No se pudo guardar la receta ❌";
