@@ -5,22 +5,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("recipesContainer");
     if (!container) return;
 
+    // ===== CARGAR RECETAS DESDE SUPABASE =====
     async function loadRecipes() {
         try {
             const { data: recipes, error } = await supabase
-                .from('recipes')  // nombre de la tabla en Supabase
+                .from('recipes')          // nombre de la tabla en Supabase
                 .select('*')
-                .order('created_at', { ascending: false });
+                .order('created_at', { ascending: false }); // las más nuevas primero
 
             if (error) throw error;
 
             if (!recipes || recipes.length === 0) {
-                container.innerHTML = "<p>No hay recetas guardadas aún.</p>";
+                container.innerHTML = `<p class="empty-state">No hay recetas guardadas aún. Agrega una nueva.</p>`;
                 return;
             }
 
-            container.innerHTML = recipes.map(recipe => `
-                <div class="recipe-card">
+            // Mostrar cada receta en tarjeta
+            recipes.forEach(recipe => {
+                const card = document.createElement("div");
+                card.classList.add("recipe-card");
+
+                card.innerHTML = `
                     <img src="${recipe.image || '../images/default-recipe.jpg'}" alt="${recipe.title}" class="recipe-image">
                     <h2>${recipe.title}</h2>
                     <p><strong>Categoría:</strong> ${recipe.category}</p>
@@ -30,8 +35,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p><strong>Ingredientes:</strong><br>${recipe.ingredients.join("<br>")}</p>
                     <p><strong>Pasos:</strong><br>${recipe.steps.join("<br>")}</p>
                     <p>${recipe.description}</p>
-                </div>
-            `).join("");
+                `;
+
+                // Click → abrir detalle (opcional)
+                card.addEventListener("click", () => {
+                    window.location.href = `recipe.html?id=${recipe.id}`;
+                });
+
+                container.appendChild(card);
+            });
 
         } catch (error) {
             console.error(error);
