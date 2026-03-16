@@ -23,19 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
             title: document.getElementById("title").value.trim(),
             category: document.getElementById("category").value,
             time: document.getElementById("time").value.trim(),
-            servings: Number(document.getElementById("servings").value),
-            calories: Number(document.getElementById("calories").value),
+            servings: parseInt(document.getElementById("servings").value) || 0,
+            calories: parseInt(document.getElementById("calories").value) || 0,
             image: document.getElementById("image").value.trim() || "../images/default-recipe.jpg",
             ingredients,
             steps,
             description: document.getElementById("description").value.trim(),
-            created_at: new Date().toISOString()
         };
 
         try {
             const { data, error } = await supabase
-                .from('recipes')  // nombre de la tabla en Supabase
-                .insert([newRecipe]);
+                .from('recipes')
+                .insert([{ ...newRecipe }]);
 
             if (error) throw error;
 
