@@ -5,168 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Receta - Sabores Deliciosos</title>
 
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- CSS global + específico -->
-    <link rel="stylesheet" href="/sabores_deliciosos/css/index.css">
-    <link rel="stylesheet" href="/sabores_deliciosos/css/addRecipe.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/addRecipe.css">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-content">
+<header class="header">
+    <div class="header-content">
+        <a href="../index.html" class="logo">🍳 Sabores Deliciosos</a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="recipes.html">Recetas</a></li>
+                <li><a href="addRecipe.html" class="active">Agregar</a></li>
+                <li><a href="contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-            <!-- LOGO -->
-            <a href="/index.html" class="logo">
-                <span class="logo-icon">🍳</span>
-                <span>Sabores Deliciosos</span>
-            </a>
+<main class="main fade-in">
+    <section class="page-header">
+        <h1 class="page-title">✏️ Agregar Nueva Receta</h1>
+        <p class="page-subtitle">Comparte tu creación culinaria con la comunidad</p>
+    </section>
 
-            <!-- NAV -->
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="/index.html">Inicio</a></li>
-                    <li><a href="/sabores_deliciosos/html/recipes.html">Recetas</a></li>
-                    <li><a href="/sabores_deliciosos/html/addRecipe.html" class="active">Agregar</a></li>
-                    <li><a href="/sabores_deliciosos/html/contact.html">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- MAIN -->
-    <main class="main fade-in">
-
-        <!-- Encabezado -->
-        <section class="page-header">
-            <h1 class="page-title">✏️ Agregar Nueva Receta</h1>
-            <p class="page-subtitle">Comparte tu creación culinaria con la comunidad</p>
-        </section>
-
-        <!-- Formulario -->
-        <section class="add-recipe-container">
-            <form class="recipe-form card" id="addRecipeForm">
-
-                <!-- Título -->
-                <div class="form-group">
-                    <label for="title">Título de la receta *</label>
-                    <input type="text" id="title" required placeholder="Ej: Pasta Carbonara">
-                </div>
-
-                <!-- Categoría + Tiempo -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="category">Categoría *</label>
-                        <select id="category" required>
-                            <option value="">Seleccionar...</option>
-                            <option value="principal">🍽️ Platos Principales</option>
-                            <option value="saludable">🥗 Saludable</option>
-                            <option value="postre">🍰 Postres</option>
-                            <option value="rapido">⚡ Rápido</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="time">Tiempo de preparación *</label>
-                        <input type="text" id="time" required placeholder="Ej: 30 min">
-                    </div>
-                </div>
-
-                <!-- Porciones + Calorías -->
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="servings">Porciones *</label>
-                        <input type="number" id="servings" min="1" required placeholder="Ej: 4">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="calories">Calorías por porción *</label>
-                        <input type="number" id="calories" min="0" required placeholder="Ej: 450">
-                    </div>
-                </div>
-
-                <!-- URL imagen -->
-                <div class="form-group">
-                    <label for="image">URL de la imagen</label>
-                    <input type="url" id="image" placeholder="https://ejemplo.com/imagen.jpg">
-                    <p class="form-hint">Si lo dejas vacío se usará una imagen por defecto</p>
-                </div>
-
-                <!-- Ingredientes -->
-                <div class="form-group">
-                    <label for="ingredients">Ingredientes *</label>
-                    <textarea id="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2&#10;Ingrediente 3"></textarea>
-                    <p class="form-hint">Escribe un ingrediente por línea</p>
-                </div>
-
-                <!-- Pasos -->
-                <div class="form-group">
-                    <label for="steps">Pasos de preparación *</label>
-                    <textarea id="steps" required placeholder="Paso 1&#10;Paso 2&#10;Paso 3"></textarea>
-                    <p class="form-hint">Escribe un paso por línea</p>
-                </div>
-
-                <!-- Descripción -->
-                <div class="form-group">
-                    <label for="description">Descripción *</label>
-                    <textarea id="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
-                </div>
-
-                <!-- Botón -->
-                <button type="submit" class="btn-submit">💾 Guardar Receta</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-
-            <div class="footer-section">
-                <h4>🍳 Sabores Deliciosos</h4>
-                <p>Las mejores recetas para tu cocina diaria.</p>
+    <section class="add-recipe-container">
+        <form class="recipe-form card" id="addRecipeForm">
+            <div class="form-group">
+                <label for="title">Título de la receta *</label>
+                <input type="text" id="title" required placeholder="Ej: Pasta Carbonara">
             </div>
 
-            <div class="footer-section">
-                <h4>Enlaces Rápidos</h4>
-                <a href="/index.html">Inicio</a>
-                <a href="/sabores_deliciosos/html/recipes.html">Recetas</a>
-                <a href="/sabores_deliciosos/html/addRecipe.html">Agregar</a>
-                <a href="/sabores_deliciosos/html/contact.html">Contacto</a>
-            </div>
-
-            <div class="footer-section">
-                <h4>Categorías</h4>
-                <a href="#" data-filter="principal">🍽️ Principales</a>
-                <a href="#" data-filter="postre">🍰 Postres</a>
-                <a href="#" data-filter="saludable">🥗 Saludable</a>
-                <a href="#" data-filter="rapido">⚡ Rápido</a>
-            </div>
-
-            <div class="footer-section">
-                <h4>Síguenos</h4>
-                <div class="social-links">
-                    <a>📘</a>
-                    <a>📷</a>
-                    <a>🐦</a>
-                    <a>📺</a>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category">Categoría *</label>
+                    <select id="category" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="principal">🍽️ Platos Principales</option>
+                        <option value="saludable">🥗 Saludable</option>
+                        <option value="postre">🍰 Postres</option>
+                        <option value="rapido">⚡ Rápido</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="time">Tiempo de preparación *</label>
+                    <input type="text" id="time" required placeholder="Ej: 30 min">
                 </div>
             </div>
-        </div>
 
-        <p class="footer-bottom">© 2026 Sabores Deliciosos - Todos los derechos reservados</p>
-    </footer>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="servings">Porciones *</label>
+                    <input type="number" id="servings" min="1" required placeholder="Ej: 4">
+                </div>
+                <div class="form-group">
+                    <label for="calories">Calorías por porción *</label>
+                    <input type="number" id="calories" min="0" required placeholder="Ej: 450">
+                </div>
+            </div>
 
+            <div class="form-group">
+                <label for="image">URL de la imagen</label>
+                <input type="url" id="image" placeholder="https://ejemplo.com/imagen.jpg">
+                <p class="form-hint">Si lo dejas vacío se usará una imagen por defecto</p>
+            </div>
+
+            <div class="form-group">
+                <label for="ingredients">Ingredientes *</label>
+                <textarea id="ingredients" required placeholder="Ingrediente 1&#10;Ingrediente 2"></textarea>
+                <p class="form-hint">Escribe un ingrediente por línea</p>
+            </div>
+
+            <div class="form-group">
+                <label for="steps">Pasos de preparación *</label>
+                <textarea id="steps" required placeholder="Paso 1&#10;Paso 2"></textarea>
+                <p class="form-hint">Escribe un paso por línea</p>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Descripción *</label>
+                <textarea id="description" required placeholder="Describe brevemente tu receta..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">💾 Guardar Receta</button>
+        </form>
+    </section>
+</main>
+
+<footer class="footer">
     <div class="toast" id="toast"></div>
+    <p class="footer-bottom">© 2026 Sabores Deliciosos</p>
+</footer>
 
-    <!-- JS -->
-    <script src="/sabores_deliciosos/js/recipesData.js"></script>
-    <script src="/sabores_deliciosos/js/addRecipe.js"></script>
-
+<script src="../js/addRecipe.js"></script>
 </body>
 </html>
