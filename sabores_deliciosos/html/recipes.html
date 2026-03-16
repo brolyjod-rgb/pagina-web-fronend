@@ -5,22 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recetas - Sabores Deliciosos</title>
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="/sabores_deliciosos/css/index.css">
-    <link rel="stylesheet" href="/sabores_deliciosos/css/recipes.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/recipes.css">
 </head>
-
 <body>
 
 <header class="header">
     <div class="header-content">
-        <a href="/index.html" class="logo">🍳 Sabores Deliciosos</a>
+        <a href="../index.html" class="logo">🍳 Sabores Deliciosos</a>
         <nav class="nav">
             <ul class="nav-list">
-                <li><a href="/index.html">Inicio</a></li>
-                <li><a href="/sabores_deliciosos/html/recipes.html" class="active">Recetas</a></li>
-                <li><a href="/sabores_deliciosos/html/addRecipe.html">Agregar</a></li>
-                <li><a href="/sabores_deliciosos/html/contact.html">Contacto</a></li>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="recipes.html" class="active">Recetas</a></li>
+                <li><a href="addRecipe.html">Agregar</a></li>
+                <li><a href="contact.html">Contacto</a></li>
             </ul>
         </nav>
     </div>
@@ -35,31 +33,6 @@
     <p class="footer-bottom">© 2026 Sabores Deliciosos</p>
 </footer>
 
-<!-- Script para mostrar recetas -->
-<script type="module">
-    import { getRecipes } from '/sabores_deliciosos/js/recipes.js';
-
-    const container = document.getElementById("recipesContainer");
-    const recipes = getRecipes();
-
-    if (recipes.length === 0) {
-        container.innerHTML = "<p>No hay recetas guardadas aún.</p>";
-    } else {
-        container.innerHTML = recipes.map(recipe => `
-            <div class="recipe-card">
-                <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
-                <h2>${recipe.title}</h2>
-                <p><strong>Categoría:</strong> ${recipe.category}</p>
-                <p><strong>Tiempo:</strong> ${recipe.time}</p>
-                <p><strong>Porciones:</strong> ${recipe.servings}</p>
-                <p><strong>Calorías:</strong> ${recipe.calories}</p>
-                <p><strong>Ingredientes:</strong><br>${recipe.ingredients.join("<br>")}</p>
-                <p><strong>Pasos:</strong><br>${recipe.steps.join("<br>")}</p>
-                <p>${recipe.description}</p>
-            </div>
-        `).join("");
-    }
-</script>
-
+<script src="../js/recipes.js"></script>
 </body>
 </html>
