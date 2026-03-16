@@ -1,4 +1,3 @@
-// sabores_deliciosos/js/addRecipe.js
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("addRecipeForm");
 
@@ -7,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Obtener datos del formulario
         const ingredients = document.getElementById("ingredients").value
             .split("\n")
             .map(i => i.trim())
@@ -25,20 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
             time: document.getElementById("time").value.trim(),
             servings: document.getElementById("servings").value,
             calories: document.getElementById("calories").value,
-            image: document.getElementById("image").value.trim() || "/sabores_deliciosos/images/default-recipe.jpg",
+            image: document.getElementById("image").value.trim() || "../images/default-recipe.jpg",
             ingredients,
             steps,
             description: document.getElementById("description").value.trim(),
-            isFavorite: false,
             createdAt: new Date().toISOString()
         };
 
-        // Guardar receta en localStorage
         const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
         recipes.push(newRecipe);
         localStorage.setItem("recipes", JSON.stringify(recipes));
 
-        // Mostrar mensaje de confirmación
         const toast = document.getElementById("toast");
         if (toast) {
             toast.textContent = "Receta guardada exitosamente 👌";
@@ -47,8 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         form.reset();
-
-        // Redirigir a la página de recetas
-        window.location.href = "/sabores_deliciosos/html/recipes.html";
+        window.location.href = "recipes.html";
     });
 });
