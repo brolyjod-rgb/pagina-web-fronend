@@ -1,17 +1,16 @@
 // recipes.js
-import { supabase } from './supabaseClient.js';
+import { supabase } from "./supabaseClient.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("recipesContainer");
     if (!container) return;
 
-    // ===== CARGAR RECETAS DESDE SUPABASE =====
     async function loadRecipes() {
         try {
             const { data: recipes, error } = await supabase
-                .from('recipes')          // nombre de la tabla en Supabase
-                .select('*')
-                .order('created_at', { ascending: false }); // las más nuevas primero
+                .from("recipes")
+                .select("*")
+                .order("created_at", { ascending: false });
 
             if (error) throw error;
 
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Mostrar cada receta en tarjeta
             recipes.forEach(recipe => {
                 const card = document.createElement("div");
                 card.classList.add("recipe-card");
@@ -37,16 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>${recipe.description}</p>
                 `;
 
-                // Click → abrir detalle (opcional)
-                card.addEventListener("click", () => {
-                    window.location.href = `recipe.html?id=${recipe.id}`;
-                });
-
                 container.appendChild(card);
             });
 
-        } catch (error) {
-            console.error(error);
+        } catch (err) {
+            console.error(err);
             container.innerHTML = "<p>No se pudieron cargar las recetas ❌</p>";
         }
     }
