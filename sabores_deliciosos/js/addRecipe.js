@@ -23,18 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
             title: document.getElementById("title").value.trim(),
             category: document.getElementById("category").value,
             time: document.getElementById("time").value.trim(),
-            servings: parseInt(document.getElementById("servings").value) || 0,
-            calories: parseInt(document.getElementById("calories").value) || 0,
+            servings: parseInt(document.getElementById("servings").value),
+            calories: parseInt(document.getElementById("calories").value),
             image: document.getElementById("image").value.trim() || "../images/default-recipe.jpg",
             ingredients,
             steps,
             description: document.getElementById("description").value.trim(),
+            created_at: new Date().toISOString()
         };
 
         try {
             const { data, error } = await supabase
                 .from('recipes')
-                .insert([{ ...newRecipe }]);
+                .insert([newRecipe]);
 
             if (error) throw error;
 
@@ -46,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => toast.classList.remove("show"), 3000);
             }
 
-            // Limpiar formulario y redirigir
             form.reset();
             window.location.href = "recipes.html";
 
