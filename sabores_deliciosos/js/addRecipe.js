@@ -1,11 +1,12 @@
+// addRecipe.js
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("addRecipeForm");
-
     if (!form) return;
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        // Obtener datos del formulario
         const ingredients = document.getElementById("ingredients").value
             .split("\n")
             .map(i => i.trim())
@@ -30,18 +31,38 @@ document.addEventListener("DOMContentLoaded", () => {
             createdAt: new Date().toISOString()
         };
 
-        const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
-        recipes.push(newRecipe);
-        localStorage.setItem("recipes", JSON.stringify(recipes));
+        // ===== GUARDAR EN BACKEND =====
+        try {
+            const response = await fetch("http://localhost:3000/api/recipes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newRecipe)
+            });
 
-        const toast = document.getElementById("toast");
-        if (toast) {
-            toast.textContent = "Receta guardada exitosamente 👌";
-            toast.classList.add("show");
-            setTimeout(() => toast.classList.remove("show"), 3000);
+            if (!response.ok) throw new Error("Error al guardar receta en el servidor");
+
+            // Mostrar toast
+            const toast = document.getElementById("toast");
+            if (toast) {
+                toast.textContent = "Receta guardada exitosamente 👌";
+                toast.classList.add("show");
+                setTimeout(() => toast.classList.remove("show"), 3000);
+            }
+
+            // Limpiar formulario y redirigir
+            form.reset();
+            window.location.href = "recipes.html";
+
+        } catch (error) {
+            console.error(error);
+            const toast = document.getElementById("toast");
+            if (toast) {
+                toast.textContent = "No se pudo guardar la receta ❌";
+                toast.classList.add("show");
+                setTimeout(() => toast.classList.remove("show"), 3000);
+            }
         }
-
-        form.reset();
-        window.location.href = "recipes.html";
     });
 });
