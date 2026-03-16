@@ -1,17 +1,20 @@
 // recipes.js
+import { supabase } from './supabaseClient.js';
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("recipesContainer");
     if (!container) return;
 
-    // ===== CARGAR RECETAS DESDE BACKEND =====
     async function loadRecipes() {
         try {
-            const response = await fetch("http://localhost:3000/api/recipes");
-            if (!response.ok) throw new Error("Error al cargar recetas desde el servidor");
+            const { data: recipes, error } = await supabase
+                .from('recipes')  // nombre de la tabla en Supabase
+                .select('*')
+                .order('created_at', { ascending: false });
 
-            const recipes = await response.json();
+            if (error) throw error;
 
-            if (recipes.length === 0) {
+            if (!recipes || recipes.length === 0) {
                 container.innerHTML = "<p>No hay recetas guardadas aún.</p>";
                 return;
             }
