@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const container = document.getElementById("recipesContainer");
     if (!container) return;
 
-    // === CARGAR RECETAS DESDE SUPABASE ===
     const { data: recipes, error } = await supabase
         .from("Recetas_deliciosas")
         .select("*")
@@ -22,31 +21,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    container.innerHTML = recipes
-        .map(recipe => {
-            // Convertir texto a arrays
-            const ingredients = (recipe.ingredients || "").split("\n");
-            const steps = (recipe.steps || "").split("\n");
-            
-            return `
-                <div class="recipe-card">
-                    <img src="${recipe.image || '../images/default-recipe.jpg'}" 
-                         alt="${recipe.title}" 
-                         class="recipe-image">
+    container.innerHTML = recipes.map(recipe => {
 
-                    <h2>${recipe.title}</h2>
+        // Convertir strings a arrays
+        const ingredientsArray =
+            typeof recipe.ingredients === "string"
+                ? recipe.ingredients.split("\n")
+                : recipe.ingredients;
 
-                    <p><strong>Categoría:</strong> ${recipe.category || "N/A"}</p>
-                    <p><strong>Tiempo:</strong> ${recipe.time || "N/A"}</p>
-                    <p><strong>Porciones:</strong> ${recipe.servings || "N/A"}</p>
-                    <p><strong>Calorías:</strong> ${recipe.calories || "N/A"}</p>
+        const stepsArray =
+            typeof recipe.steps === "string"
+                ? recipe.steps.split("\n")
+                : recipe.steps;
 
-                    <p><strong>Ingredientes:</strong><br>${ingredients.join("<br>")}</p>
-                    <p><strong>Pasos:</strong><br>${steps.join("<br>")}</p>
+        return `
+        <div class="recipe-card">
+            <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
+            <h2>${recipe.title}</h2>
+            <p><strong>Categoría:</strong> ${recipe.category}</p>
+            <p><strong>Tiempo:</strong> ${recipe.time}</p>
+            <p><strong>Porciones:</strong> ${recipe.servings}</p>
+            <p><strong>Calorías:</strong> ${recipe.calories}</p>
 
-                    <p>${recipe.description || ""}</p>
-                </div>
-            `;
-        })
-        .join("");
+            <p><strong>Ingredientes:</strong><br>${ingredientsArray.join("<br>")}</p>
+            <p><strong>Pasos:</strong><br>${stepsArray.join("<br>")}</p>
+
+            <p>${recipe.description}</p>
+        </div>
+        `;
+    }).join("");
 });
