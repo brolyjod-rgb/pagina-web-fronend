@@ -1,5 +1,5 @@
-// addRecipe.js
-import { supabase } from './supabaseClient.js';
+// js/addRecipe.js
+import { supabase } from "./supabaseClient.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("addRecipeForm");
@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Obtener datos del formulario
         const ingredients = document.getElementById("ingredients").value
             .split("\n")
             .map(i => i.trim())
@@ -29,35 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
             ingredients,
             steps,
             description: document.getElementById("description").value.trim(),
-            created_at: new Date().toISOString()
         };
 
-        try {
-            const { data, error } = await supabase
-                .from('recipes')
-                .insert([newRecipe]);
+        const { error } = await supabase
+            .from("Recetas_deliciosas")
+            .insert([newRecipe]);
 
-            if (error) throw error;
+        const toast = document.getElementById("toast");
 
-            // Mostrar toast
-            const toast = document.getElementById("toast");
-            if (toast) {
-                toast.textContent = "Receta guardada exitosamente 👌";
-                toast.classList.add("show");
-                setTimeout(() => toast.classList.remove("show"), 3000);
-            }
-
+        if (error) {
+            console.error(error);
+            toast.textContent = "❌ Error al guardar";
+        } else {
+            toast.textContent = "👌 Receta guardada";
             form.reset();
-            window.location.href = "recipes.html";
-
-        } catch (err) {
-            console.error(err);
-            const toast = document.getElementById("toast");
-            if (toast) {
-                toast.textContent = "No se pudo guardar la receta ❌";
-                toast.classList.add("show");
-                setTimeout(() => toast.classList.remove("show"), 3000);
-            }
+            setTimeout(() => window.location.href = "recipes.html", 1000);
         }
+
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
     });
 });
