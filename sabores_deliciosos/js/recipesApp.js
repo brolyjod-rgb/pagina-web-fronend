@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     initializeApp();
 });
 
@@ -8,6 +8,9 @@ function initializeApp() {
     const recipesGrid = document.getElementById("recipesGrid");
     if (recipesGrid && window.location.pathname.includes("recipes.html")) {
         renderRecipes(getAllRecipes());
+
+        // 🔍 Activamos el filtro solo en recipes.html
+        activateSearchFilter();
     }
     
     if (window.location.pathname.includes("favorites.html")) {
@@ -44,4 +47,26 @@ function renderFavoritesPage() {
             renderRecipes(favorites);
         }
     }
+}
+
+/* =========================================================
+   🔍 Filtro de búsqueda integrado para recipes.html
+   ========================================================= */
+function activateSearchFilter() {
+    const searchInput = document.getElementById("searchInput");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        const allRecipes = getAllRecipes();
+
+        const filtered = allRecipes.filter(recipe => {
+            const title = (recipe.title || "").toLowerCase();
+            const description = (recipe.description || "").toLowerCase();
+            return title.includes(query) || description.includes(query);
+        });
+
+        renderRecipes(filtered);
+    });
 }
