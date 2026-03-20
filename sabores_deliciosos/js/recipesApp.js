@@ -13,6 +13,7 @@ function initializeApp() {
         activateSearchFilter();
     }
     
+    
     if (window.location.pathname.includes("favorites.html")) {
         renderFavoritesPage();
     }
